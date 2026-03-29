@@ -60,49 +60,34 @@ const express = require('express')
 const app = express();
 
 app.get('/', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('./index.html', (err, data) => {
+    res.sendFile('/home/david/top-node/project-basic-informational-site/index.html', (err) => {
         if(err) {
             console.log(err);
-            return;
         }
-        res.write(data);
-        res.end();
-    })
+    });
 });
 
 app.get('/about-me', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('./about.html', (err, data) => {
+    res.sendFile('/home/david/top-node/project-basic-informational-site/about-me.html', (err) => {
         if(err) {
             console.log(err);
-            return;
         }
-        res.write(data);
-        res.end();
-    })
+    });
 });
 app.get('/contact-me', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('./contact-me.html', (err, data) => {
+    res.sendFile('/home/david/top-node/project-basic-informational-site/contact-me.html', (err) => {
         if(err) {
             console.log(err);
-            return;
         }
-        res.write(data);
-        res.end();
-    })
+    });
 });
 
 app.use((req, res) => {
-    fs.readFile('404.html', (err, data) => {
+    res.sendFile('/home/david/top-node/project-basic-informational-site/404.html', (err) => {
         if(err) {
-            console.log(err)
-            return;
+            console.log(err);
         }
-        res.write(data);
-        res.end();
-    })
+    });
 })
 
 const PORT = 3000;
